@@ -30,13 +30,24 @@ window.addEventListener('DOMContentLoaded', event => {
     document.addEventListener('scroll', navbarShrink);
 
     // Activate Bootstrap scrollspy on the main nav element
+    // Activate Bootstrap scrollspy on the main nav element
     const mainNav = document.body.querySelector('#mainNav');
     if (mainNav) {
-        new bootstrap.ScrollSpy(document.body, {
+        const scrollSpy = new bootstrap.ScrollSpy(document.body, {
             target: '#mainNav',
-            rootMargin: '0px 0px -40%',
+            offset: 80, // IMPORTANT: accounts for navbar height
         });
-    };
+
+        // Refresh ScrollSpy on resize & scroll (fixes inactive sections)
+        window.addEventListener('resize', () => {
+            scrollSpy.refresh();
+        });
+
+        document.addEventListener('scroll', () => {
+            scrollSpy.refresh();
+        });
+    }
+
 
     // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector('.navbar-toggler');
@@ -52,6 +63,7 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
 
 // Countdown Timer functionality
 function startCountdown(eventDate) {
@@ -86,6 +98,7 @@ function startCountdown(eventDate) {
 // Initialize countdown when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Set the event date to March 14, 2025
-    const eventDate = new Date("March 28, 2025 12:15:00").getTime();
+    const eventDate = new Date("February 13, 2026 12:15:00").getTime();
     startCountdown(eventDate);
 });
+

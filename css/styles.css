@@ -81,6 +81,11 @@
   --bs-link-hover-color: #9f8a5d;
   --bs-code-color: #d63384;
   --bs-highlight-bg: #faf4e0;
+  --bs-heading-font-family: 'Marcellus SC', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--bs-heading-font-family);
 }
 
 ::-webkit-scrollbar {
@@ -88,7 +93,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #f5df90; 
+  background:#E6BD53; 
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -119,6 +124,10 @@ html,body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.masthead h1 {
+  font-family: 'Marcellus SC', serif;
 }
 
 hr {
@@ -622,6 +631,21 @@ progress {
 .img-navbar-logo {
   max-width: 100%;
   height: 70px;
+  mix-blend-mode: normal;
+}
+#mainNav.navbar-shrink .img-navbar-logo {
+  filter: brightness(0.5) contrast(2.8);
+}
+/* MOBILE: transparent before scroll */
+@media (max-width: 991.98px) {
+  #mainNav {
+    background-color: transparent !important;
+  }
+
+  /* When scrolled */
+  #mainNav.navbar-shrink {
+    background-color: #fff !important;
+  }
 }
 
 .img-thumbnail {
@@ -4231,7 +4255,7 @@ textarea.form-control-lg {
   --bs-navbar-color: rgba(255, 255, 255, 0.55);
   --bs-navbar-hover-color: rgba(255, 255, 255, 0.75);
   --bs-navbar-disabled-color: rgba(255, 255, 255, 0.25);
-  --bs-navbar-active-color: #fff;
+  --bs-navbar-active-color: rgba(168, 131, 38, 1);
   --bs-navbar-brand-color: #fff;
   --bs-navbar-brand-hover-color: #fff;
   --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
@@ -11015,11 +11039,14 @@ body {
 }
 #mainNav .navbar-toggler:focus {
   outline: none;
+  border:0.5px solid;
 }
 #mainNav .navbar-brand {
   color: #000;
   font-weight: 700;
   padding: 0.9rem 0;
+  outline:none;
+  
 }
 #mainNav .navbar-nav .nav-item:hover {
   color: fade(#fff, 80%);
@@ -11054,7 +11081,7 @@ body {
     color: #fff;
   }
   #mainNav.navbar-shrink {
-    background-color: #fff;
+    background-color:rgb(255,255,255);
   }
   #mainNav.navbar-shrink .navbar-brand {
     color: #000;
@@ -11065,15 +11092,15 @@ body {
     border-bottom: 0.25rem solid transparent;
   }
   #mainNav.navbar-shrink .nav-link:hover {
-    color: #f1cf88;
+    color: rgba(168, 131, 38, 1);
   }
   #mainNav.navbar-shrink .nav-link:active {
-    color: #467370;
+    color: rgba(168, 131, 38, 1);
   }
   #mainNav.navbar-shrink .nav-link.active {
-    color: #f1cf88;
+    color: rgba(168, 131, 38, 1);
     outline: none;
-    border-bottom: 0.25rem solid #f1cf88;
+    border-bottom: 0.25rem solid rgba(168, 131, 0 , 1);
   }
 }
 
@@ -11100,7 +11127,7 @@ body {
   background-size: cover;
 }
 .masthead h1 , .masthead .h1 {
-  font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Marcellus SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 2.5rem;
   line-height: 2.5rem;
   letter-spacing: 0.8rem;
@@ -12429,5 +12456,164 @@ body {
   .video-testimonial-container h2 {
       font-size: 1.5rem;
       margin-bottom: 1.5rem;
+  }
+}
+
+/* Navbar link color BEFORE scroll (transparent state) */
+#mainNav:not(.navbar-shrink) .nav-link {
+  color: 'white' !important; /* gold */
+}
+
+/* Hover + active before scroll */
+#mainNav:not(.navbar-shrink) .nav-link:hover,
+#mainNav:not(.navbar-shrink) .nav-link.active {
+  color: #e4c662 !important;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+body:hover::-webkit-scrollbar-thumb {
+  background-color:#E6BD53;
+}
+/* Glimmer effect on masthead */
+.masthead {
+  position: relative;
+  overflow: hidden;
+}
+
+.masthead::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(241, 207, 136, 0.15) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  animation: mastheadGlimmer 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes mastheadGlimmer {
+  0% {
+    left: -75%;
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    left: 125%;
+    opacity: 0;
+  }
+  100% {
+    left: 125%;
+    opacity: 0;
+  }
+}
+
+/* Remove scrollbar arrows completely */
+::-webkit-scrollbar-button:single-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(241, 207, 136, 0.7);
+  border-radius: 999px;
+  
+}
+/* Base card setup */
+.online-committee-card,
+.committee-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glimmer layer hidden initially */
+.online-committee-card::before,
+.committee-card::before {
+  content: "";
+  position: absolute;
+  top: -120%;
+  left: -60%;
+  width: 60%;
+  height: 300%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(230, 189, 83, 0.5) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  opacity: 0; /* hidden initially */
+  transition: all 0.6s ease, opacity 0.3s ease;
+}
+
+/* Show glimmer and sweep on hover */
+.online-committee-card:hover::before,
+.committee-card:hover::before {
+  left: 140%;
+  opacity: 1; /* appear on hover */
+}
+
+
+
+@media (max-width: 991.98px) {
+  /* Navbar collapse container */
+  #mainNav #navbarResponsive {
+    background-color: #fff !important;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Remove default transitions that cause stepwise effect */
+  #mainNav #navbarResponsive .nav-link {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    color: #E6BD53 !important;
+    transition: color 0.2s ease, background-color 0.2s ease !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Hover/focus */
+  #mainNav #navbarResponsive .nav-link:hover,
+  #mainNav #navbarResponsive .nav-link:focus {
+    color: #E6BD53 !important;
+    background-color: rgba(230, 189, 83, 0.1);
+    font-style: italic;
+  }
+
+  /* Active link */
+  #mainNav #navbarResponsive .nav-link.active {
+    color: #9f8a5d !important;
+    background-color: rgba(159, 138, 93, 0.1);
+    font-style: italic;
+  }
+
+  /* Hamburger button */
+  #mainNav .navbar-toggler {
+    border-color: goldenrod !important;
+    color: goldenrod;
+    /* transition: all 0.3s ease; */
   }
 }
