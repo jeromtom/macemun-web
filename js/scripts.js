@@ -102,3 +102,16 @@ document.addEventListener('DOMContentLoaded', function() {
     startCountdown(eventDate);
 });
 
+// document.addEventListener("keydown", function (e) {
+//     if (
+//       e.ctrlKey && (e.key === 's' || e.key === 'u' || e.key === 'c') ||
+//       e.key === 'F12'
+//     ) {
+//       e.preventDefault();
+//       return false;
+//     }
+//   });
+//   document.addEventListener("contextmenu", function (e) {
+//     e.preventDefault();
+//   });
+

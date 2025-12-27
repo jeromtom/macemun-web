@@ -11120,7 +11120,7 @@ body {
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.4) 50%, #000 100%), url("../assets/img/macemunteam.jpg");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.4) 50%, #000 100%), url("../assets/img/macemunteam2024.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -12589,7 +12589,7 @@ body:hover::-webkit-scrollbar-thumb {
   #mainNav #navbarResponsive .nav-link {
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
-    color: #E6BD53 !important;
+    color: darkgoldenrod !important;
     transition: color 0.2s ease, background-color 0.2s ease !important;
     opacity: 1 !important;
     transform: none !important;
@@ -12623,7 +12623,6 @@ body:hover::-webkit-scrollbar-thumb {
 .glimmer-card {
   position: relative;
   overflow: hidden;
-  /* We DO NOT add 'display: flex' here, keeping your vertical layout safe */
 }
 
 /* The Shine Animation */
@@ -12652,3 +12651,4 @@ body:hover::-webkit-scrollbar-thumb {
   left: 140%;
   opacity: 1;
 }
+
