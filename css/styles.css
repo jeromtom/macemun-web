@@ -12052,7 +12052,7 @@ body {
 .testimonial .description{
   font-size: 15px;
   color: #777;
-  text-align: left;
+  text-align: justify;
   margin-bottom: 30px;
 }
 
