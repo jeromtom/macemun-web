@@ -12004,6 +12004,12 @@ body {
   padding: 30px 0;
 }
 
+.testimonial{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /* MOBILE FIX */
 @media screen and (max-width: 768px) {
   .test1 {
