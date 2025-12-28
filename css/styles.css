@@ -81,18 +81,11 @@
   --bs-link-hover-color: #9f8a5d;
   --bs-code-color: #d63384;
   --bs-highlight-bg: #faf4e0;
+  --bs-heading-font-family: 'Marcellus SC', serif;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #f5df90; 
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #f1cf88; 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--bs-heading-font-family);
 }
 
 *,
@@ -121,6 +114,10 @@ html,body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.masthead h1 {
+  font-family: 'Marcellus SC', serif;
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -134,7 +131,7 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
-  color: #f1cf88;
+  color: goldenrod;
 }
 
 h1, .h1 {
@@ -622,6 +619,21 @@ progress {
 .img-navbar-logo {
   max-width: 100%;
   height: 70px;
+  mix-blend-mode: normal;
+}
+#mainNav.navbar-shrink .img-navbar-logo {
+  filter: brightness(0.5) contrast(2.8);
+}
+/* MOBILE: transparent before scroll */
+@media (max-width: 991.98px) {
+  #mainNav {
+    background-color: transparent !important;
+  }
+
+  /* When scrolled */
+  #mainNav.navbar-shrink {
+    background-color: #fff !important;
+  }
 }
 
 .img-thumbnail {
@@ -4231,7 +4243,7 @@ textarea.form-control-lg {
   --bs-navbar-color: rgba(255, 255, 255, 0.55);
   --bs-navbar-hover-color: rgba(255, 255, 255, 0.75);
   --bs-navbar-disabled-color: rgba(255, 255, 255, 0.25);
-  --bs-navbar-active-color: #fff;
+  --bs-navbar-active-color: rgba(168, 131, 38, 1);
   --bs-navbar-brand-color: #fff;
   --bs-navbar-brand-hover-color: #fff;
   --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
@@ -11015,11 +11027,14 @@ body {
 }
 #mainNav .navbar-toggler:focus {
   outline: none;
+  border:0.5px solid;
 }
 #mainNav .navbar-brand {
   color: #000;
   font-weight: 700;
   padding: 0.9rem 0;
+  outline:none;
+  
 }
 #mainNav .navbar-nav .nav-item:hover {
   color: fade(#fff, 80%);
@@ -11054,7 +11069,7 @@ body {
     color: #fff;
   }
   #mainNav.navbar-shrink {
-    background-color: #fff;
+    background-color:rgb(255,255,255);
   }
   #mainNav.navbar-shrink .navbar-brand {
     color: #000;
@@ -11065,15 +11080,15 @@ body {
     border-bottom: 0.25rem solid transparent;
   }
   #mainNav.navbar-shrink .nav-link:hover {
-    color: #f1cf88;
+    color: rgba(168, 131, 38, 1);
   }
   #mainNav.navbar-shrink .nav-link:active {
-    color: #467370;
+    color: rgba(168, 131, 38, 1);
   }
   #mainNav.navbar-shrink .nav-link.active {
-    color: #f1cf88;
+    color: rgba(168, 131, 38, 1);
     outline: none;
-    border-bottom: 0.25rem solid #f1cf88;
+    border-bottom: 0.25rem solid rgba(168, 131, 0 , 1);
   }
 }
 
@@ -11093,14 +11108,14 @@ body {
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.4) 50%, #000 100%), url("../assets/img/macemunteam.jpg");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.4) 50%, #000 100%), url("../assets/img/macemunteam2024.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 }
 .masthead h1 , .masthead .h1 {
-  font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Marcellus SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 2.5rem;
   line-height: 2.5rem;
   letter-spacing: 0.8rem;
@@ -11335,6 +11350,7 @@ body {
   font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
+  text-align: left;
   padding: 0.75rem 1rem;
   margin: 0.5rem 0;
   background: #fff;
@@ -11944,138 +11960,106 @@ body {
 
 .test1 {
   display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: stretch;
   flex-wrap: wrap;
-  gap: 200px;
+  gap: 2rem; /* responsive spacing */
+  padding: 2rem;
 }
 
 .testimonial {
   background: #fff;
   text-align: center;
   padding: 30px;
-  margin: 20px;
+  margin: 0;
   position: relative;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  flex-basis: 60%;
-  min-width: 280px;
-}
-
-/* .testimonial{
-  background: #fff;
-  text-align: center;
-  padding: 30px 30px 50px;
-  margin: 10px 20px 100px;
-  position: relative;
-  margin: 100px;
-  padding-right: 30px;
-}
- */
-.test1 .testimonial{
-  flex: 1;
-  margin: 20px 20px;
+  flex: 1 1 320px; /* responsive cards */
+  max-width: 500px;
 }
 
 #lasttest{
   max-width: 500px;
 }
 
-@media screen and (min-width: 1024px){
-  .testimonial-section{
-    height: 200vmin;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 8rem 5rem;
-    padding: 30px 0;
-}
+/* REMOVE forced height */
+.testimonial-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem 2rem;
+  padding: 30px 0;
 }
 
+.testimonial{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* MOBILE FIX */
 @media screen and (max-width: 768px) {
   .test1 {
     flex-direction: column;
-    padding: 2rem;
+    gap: 1.5rem;
   }
-  
-  .test1 .testimonial {
-    margin: 2rem auto;
+
+  .testimonial {
+    max-width: 100%;
+  }
+
+  /* Disable triangles on mobile */
+  .testimonial:before,
+  .testimonial:after {
+    display: none;
   }
 }
 
-.testimonial:before,
-.testimonial:after{
+/* Speech bubble triangles (desktop only) */
+@media screen and (min-width: 769px) {
+  .testimonial:before,
+  .testimonial:after{
     content: "";
     border-top: 40px solid #fff;
     border-right: 125px solid transparent;
     position: absolute;
     bottom: -40px;
     left: 0;
-}
+  }
 
-.testimonial:after{
+  .testimonial:after{
     border-right: none;
     border-left: 125px solid transparent;
     left: auto;
     right: 0;
+  }
 }
 
 .testimonial .icon{
-    display: inline-block;
-    font-size: 80px;
-    color: #bd986b;
-    margin-bottom: 20px;
-    opacity: 0.6;
-}
-.testimonial .description{
-    font-size: 15px;
-    color: #777;
-    text-align: left;
-    margin-bottom: 30px;
-    opacity: 0.8;
-}
-.testimonial .testimonial-content{
-    width: 100%;
-    position: absolute;
-    left: 0;
+  font-size: 80px;
+  color: #bd986b;
+  margin-bottom: 20px;
+  opacity: 0.6;
 }
 
-.testimonial .pic{
-    display: inline-block;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    box-shadow: 0 0 2px 2px #daad86;
-    overflow: hidden;
-    z-index: 1;
-    position: relative;
+.testimonial .description{
+  font-size: 15px;
+  color: #777;
+  text-align: justify;
+  margin-bottom: 30px;
 }
+
+.testimonial .testimonial-content{
+  position: relative; /* FIXED */
+}
+
 .testimonial .pic img{
   height: 120px;
   width: 120px;
+  border-radius: 50%;
 }
-.testimonial .title{
-    font-size: 15px;
-    font-weight: bold;
-    color: #fff;
-    text-transform: capitalize;
-    margin: 0 0 5px 0;
-}
-.testimonial .post{
-    display: block;
-    font-size: 14px;
-    color: #ffd9b8;
-}
-.owl-theme .owl-controls{
-    margin-top: 0;
-}
-.owl-theme .owl-controls .owl-page span{
-    width: 32px;
-    height: 10px;
-    background: #fff;
-    border: 2px solid #bd986b;
-    margin: 5px;
-    opacity: 1;
-}
+
 .owl-theme .owl-controls .owl-page.active span,
 .owl-theme .owl-controls.clickable .owl-page:hover span{
     background: #ffd9b8;
@@ -12274,56 +12258,69 @@ body {
   color: #f1cf88;;
 }
 
-.contact-section {
-  padding-top: 1000px;
+/* contaacts */
+.contact-cont{
+  display: flex;
+  background-color: white;
+  flex-wrap: wrap;
+  min-width:280px;
+  padding: 1rem;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
 }
-@media (min-width: 769px) and (max-width: 1200px) {
-  .contact-section {
-    padding-top: 1400px;
+
+.contact-item{
+  /* flex: 1 1 45%; */
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size:12px;
+}
+
+.contact-item a{
+  white-space: nowrap;
+}
+
+.contact-item a,p{
+  color: darkgoldenrod;
+  font-weight: 600;
+}
+
+.contact-item a:hover{
+  color: #e6bd53;
+  font-weight: 600;
+}
+
+@media (max-width: 768px){
+  .contact-cont{
+    flex-direction: column;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .contact-item{
+    flex: 1 1 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 15px;
+  }
+
+  .contact-item.full{
+    justify-content: center;
   }
 }
-@media (max-width: 768px) {
-  .contact-section {
-    padding-top: 10rem;
-  }
-}
-.contact-section .card {
-  border: 0;
-  border-bottom: 0.25rem solid #f1cf88;
-}
-.contact-section .card h4, .contact-section .card .h4 {
-  font-size: 0.8rem;
-  font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  text-transform: uppercase;
-  letter-spacing: 0.15rem;
-}
-.contact-section .card hr {
-  opacity: 1;
-  border-color: #f1cf88;
-  border-width: 0.25rem;
-  width: 3rem;
-}
-.contact-section .social {
-  margin-top: 5rem;
-}
-.contact-section .social a {
-  text-align: center;
-  height: 3rem;
-  width: 3rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 100%;
-  line-height: 3rem;
-  color: rgba(255, 255, 255, 0.3);
-}
-.contact-section .social a:hover {
-  color: rgba(255, 255, 255, 0.5);
-}
-.contact-section .social a:active {
-  color: #fff;
-}
+
 
 .footer {
   padding: 5rem 0;
+  font-size: 15px;
 }
 
 
@@ -12429,5 +12426,288 @@ body {
   .video-testimonial-container h2 {
       font-size: 1.5rem;
       margin-bottom: 1.5rem;
+  }
+}
+
+
+.footer-shimmer{
+  font-weight: 500;
+  letter-spacing: 0.08rem;
+  background: linear-gradient(
+    90deg,
+    #cfcfcf 25%,
+    #f1cf88 50%,
+    #cfcfcf 75%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmerText 2s linear infinite;
+}
+
+@keyframes shimmerText{
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Navbar link color BEFORE scroll (transparent state) */
+#mainNav:not(.navbar-shrink) .nav-link {
+  color: 'white' !important; /* gold */
+}
+
+/* Hover + active before scroll */
+#mainNav:not(.navbar-shrink) .nav-link:hover,
+#mainNav:not(.navbar-shrink) .nav-link.active {
+  color: #e4c662 !important;
+}
+
+/* Glimmer effect on masthead */
+.masthead {
+  position: relative;
+  overflow: hidden;
+}
+
+.masthead::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(241, 207, 136, 0.15) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  animation: mastheadGlimmer 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes mastheadGlimmer {
+  0% {
+    left: -75%;
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    left: 125%;
+    opacity: 0;
+  }
+  100% {
+    left: 125%;
+    opacity: 0;
+  }
+}
+
+/* Remove scrollbar arrows completely */
+::-webkit-scrollbar-button:single-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(241, 207, 136, 0.7);
+  border-radius: 999px;
+  
+}
+
+/* Hide scrollbar by default */
+body.hide-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+/* Show scrollbar when scrolling */
+body.show-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #E6BD53;
+  border-radius: 10px;
+}
+@media(max-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+/* Base card setup */
+.online-committee-card,
+.committee-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glimmer layer hidden initially */
+.online-committee-card::before,
+.committee-card::before {
+  content: "";
+  position: absolute;
+  top: -120%;
+  left: -60%;
+  width: 60%;
+  height: 300%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(230, 189, 83, 0.5) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  opacity: 0; /* hidden initially */
+  transition: all 0.6s ease, opacity 0.3s ease;
+}
+
+/* Show glimmer and sweep on hover */
+.online-committee-card:hover::before,
+.committee-card:hover::before {
+  left: 140%;
+  opacity: 1; /* appear on hover */
+}
+
+
+
+@media (max-width: 991.98px) {
+  /* Navbar collapse container */
+  #mainNav #navbarResponsive {
+    background-color: #fff !important;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Remove default transitions that cause stepwise effect */
+  #mainNav #navbarResponsive .nav-link {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    color: darkgoldenrod !important;
+    transition: color 0.2s ease, background-color 0.2s ease !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Hover/focus */
+  #mainNav #navbarResponsive .nav-link:hover,
+  #mainNav #navbarResponsive .nav-link:focus {
+    color: #E6BD53 !important;
+    background-color: rgba(230, 189, 83, 0.1);
+    font-style: italic;
+  }
+
+  /* Active link */
+  #mainNav #navbarResponsive .nav-link.active {
+    color: #9f8a5d !important;
+    background-color: rgba(159, 138, 93, 0.1);
+    font-style: italic;
+  }
+
+  /* Hamburger button */
+  #mainNav .navbar-toggler {
+    border-color: goldenrod !important;
+    color: goldenrod;
+    /* transition: all 0.3s ease; */
+  }
+}
+
+
+/* --- New Glimmer Effect Class --- */
+.glimmer-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* The Shine Animation */
+.glimmer-card::before {
+  content: "";
+  position: absolute;
+  top: -120%;
+  left: -60%;
+  width: 60%;
+  height: 300%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(230, 189, 83, 0.5) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.6s ease, opacity 0.3s ease;
+  z-index: 2;
+}
+
+/* Trigger on Hover */
+.glimmer-card:hover::before {
+  left: 140%;
+  opacity: 1;
+}
+
+.social a{
+  color:goldenrod;
+  animation: colors 1s infinite alternate;
+}
+
+@keyframes colors{
+  from{
+    color: goldenrod;
+  }
+  to{
+    color: var(--bs-pink);
+  }
+}
+.social a:hover{
+  color: var(--bs-pink) !important;
+}
+
+/* Fade-up on scroll (desktop + mobile) */
+
+
+/* Fade-up visibility animation */
+.fade-up {
+  opacity: 0;
+  /* transform: translateY(24px); small enough to avoid overflow */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+/* When element enters viewport */
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile tuning */
+@media (max-width: 768px) {
+  .fade-up {
+    transform: translateY(18px);
+    transition-duration: 0.5s;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+
+@media (max-width: 768px) {
+  body {
+    -webkit-touch-callout: none;
   }
 }
