@@ -88,18 +88,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--bs-heading-font-family);
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background:#E6BD53; 
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #f1cf88; 
-}
-
 *,
 *::before,
 *::after {
@@ -12004,6 +11992,12 @@ body {
   padding: 30px 0;
 }
 
+.testimonial{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /* MOBILE FIX */
 @media screen and (max-width: 768px) {
   .test1 {
@@ -12052,7 +12046,7 @@ body {
 .testimonial .description{
   font-size: 15px;
   color: #777;
-  text-align: left;
+  text-align: justify;
   margin-bottom: 30px;
 }
 
@@ -12326,6 +12320,7 @@ body {
 
 .footer {
   padding: 5rem 0;
+  font-size: 15px;
 }
 
 
@@ -12468,13 +12463,6 @@ body {
   color: #e4c662 !important;
 }
 
-body::-webkit-scrollbar-thumb {
-  background-color: transparent;
-}
-
-body:hover::-webkit-scrollbar-thumb {
-  background-color:#E6BD53;
-}
 /* Glimmer effect on masthead */
 .masthead {
   position: relative;
@@ -12525,7 +12513,7 @@ body:hover::-webkit-scrollbar-thumb {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -12536,6 +12524,22 @@ body:hover::-webkit-scrollbar-thumb {
   background-color: rgba(241, 207, 136, 0.7);
   border-radius: 999px;
   
+}
+
+/* Hide scrollbar by default */
+body.hide-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+/* Show scrollbar when scrolling */
+body.show-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #E6BD53;
+  border-radius: 10px;
+}
+@media(max-width: 768px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 /* Base card setup */
 .online-committee-card,
@@ -12652,8 +12656,58 @@ body:hover::-webkit-scrollbar-thumb {
 
 .social a{
   color:goldenrod;
+  animation: colors 1s infinite alternate;
 }
 
+@keyframes colors{
+  from{
+    color: goldenrod;
+  }
+  to{
+    color: var(--bs-pink);
+  }
+}
 .social a:hover{
   color: var(--bs-pink) !important;
+}
+
+/* Fade-up on scroll (desktop + mobile) */
+
+
+/* Fade-up visibility animation */
+.fade-up {
+  opacity: 0;
+  /* transform: translateY(24px); small enough to avoid overflow */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+/* When element enters viewport */
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile tuning */
+@media (max-width: 768px) {
+  .fade-up {
+    transform: translateY(18px);
+    transition-duration: 0.5s;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+
+@media (max-width: 768px) {
+  body {
+    -webkit-touch-callout: none;
+  }
 }

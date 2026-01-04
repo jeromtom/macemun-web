@@ -30,7 +30,6 @@ window.addEventListener('DOMContentLoaded', event => {
     document.addEventListener('scroll', navbarShrink);
 
     // Activate Bootstrap scrollspy on the main nav element
-    // Activate Bootstrap scrollspy on the main nav element
     const mainNav = document.body.querySelector('#mainNav');
     if (mainNav) {
         const scrollSpy = new bootstrap.ScrollSpy(document.body, {
@@ -114,3 +113,44 @@ document.addEventListener("keydown", function (e) {
   document.addEventListener("contextmenu", function (e) {
     e.preventDefault();
   });
+  
+ // Fade-up animation for elements
+  document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll(".fade-up");
+
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -30px 0px"
+      }
+    );
+
+    elements.forEach(el => observer.observe(el));
+  });
+
+
+//scrollbar disappear on idle
+let scrollbarTimeout;
+document.body.classList.add("hide-scrollbar");
+window.addEventListener("scroll", () => {
+  // Show scrollbar while scrolling
+  document.body.classList.add("show-scrollbar");
+  document.body.classList.remove("hide-scrollbar");
+
+  // Clear previous timeout
+  clearTimeout(scrollbarTimeout);
+
+  // Hide scrollbar after scroll stops
+  scrollbarTimeout = setTimeout(() => {
+    document.body.classList.remove("show-scrollbar");
+    document.body.classList.add("hide-scrollbar");
+  }, 100); // delay after scrolling stops
+});
