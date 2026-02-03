@@ -12218,7 +12218,7 @@ body {
 
 
 .team .member {
-  overflow: hidden;
+  /* overflow: hidden; */
   text-align: center;
   border-radius: 5px;
   background: #fff;
